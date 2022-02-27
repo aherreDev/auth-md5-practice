@@ -1,0 +1,14 @@
+<div class="navbar-start">
+  <%= link_to 'Home', root_path(anchor: 'home'), :class => 'navbar-item' %>
+  <%= link_to 'About Us', root_path(anchor: 'about_us'), :class => 'navbar-item' %>
+  <%= link_to 'Contact', root_path(anchor: 'contact'), :class => 'navbar-item' %>
+</div>
+
+<div class="navbar-end">
+  <div class="navbar-item">
+    <%= link_to "Login", new_user_session_path, :class => 'button is-light'  %>
+  </div>
+  <div class="navbar-item">
+    <%= link_to "Sign up", new_user_registration_path, :class => 'button is-primary'  %>
+  </div>
+</div>

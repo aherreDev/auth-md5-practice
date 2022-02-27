@@ -1,0 +1,15 @@
+<div class="navbar-start">
+  <div class="navbar-item">
+    Logged in as &nbsp; <strong><%= user.email %></strong>.
+  </div>
+</div>
+
+<div class="navbar-end">
+  <div class="navbar-item">
+    <%= link_to 'Edit profile', edit_user_registration_path, :class => 'button is-light' %>
+  </div>
+
+  <div class="navbar-item">
+    <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'button is-white'  %>
+  </div>
+</div>

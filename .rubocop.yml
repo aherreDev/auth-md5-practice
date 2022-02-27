@@ -1,0 +1,83 @@
+require:
+  - rubocop-performance
+  - rubocop-rails
+
+AllCops:
+  NewCops: enable
+  Exclude:
+    - '**/Gemfile'
+    - '**/Capfile'
+    - 'vendor/**/*'
+    - 'db/**/*'
+    - 'config/**/*'
+    - 'bin/**/*'
+    - 'docs/**/*'
+    - 'test/**/*'
+    - '**/*.gemspec'
+    - '**/*.rake'
+    - 'node_modules/**/*'
+  TargetRubyVersion: 2.7.2
+
+Layout/LineLength:
+  Max: 115
+  IgnoredPatterns: ['\sscope', '\sbelongs_to', '\shas_(one|many)']
+Metrics/ClassLength:
+  Max: 200
+Metrics/ModuleLength:
+  Max: 200
+Naming/VariableNumber:
+  EnforcedStyle: snake_case
+  # TODO: first 2 are from Stripe, we can't do a lot here, but the rest could be fixed in our DB?
+  AllowedIdentifiers: [last4, verifone_P400, address_line1, address_line2, line1, line2, address2]
+Naming/RescuedExceptionsVariableName:
+  PreferredName: ex
+Style/AccessorGrouping:
+  Enabled: false
+Style/ClassAndModuleChildren:
+  Enabled: false
+Style/Documentation:
+  Enabled: false
+Style/FrozenStringLiteralComment:
+  Enabled: false
+Style/HashAsLastArrayItem:
+  EnforcedStyle: no_braces
+Style/RedundantBegin:
+  Enabled: false
+
+Rails:
+  Enabled: true
+Rails/HasAndBelongsToMany:
+  Enabled: false
+Rails/SkipsModelValidations:
+  # TODO: this should be done with Whitelist: ['touch', 'update_all']
+  ForbiddenMethods:
+    - decrement_counter
+    - increment_counter
+    - toggle!
+    - update_attribute
+    - update_column
+    - update_columns
+    - update_counters
+Rails/UnknownEnv:
+  Environments:
+    - production
+    - development
+    - test
+Rails/Validation:
+  Enabled: false
+
+# API: allow using some exceptions (no delegates and is_something? method names)
+Naming/PredicateName:
+  Exclude:
+    - 'app/graphql/**/*'
+Rails/Delegate:
+  Exclude:
+    - 'app/graphql/**/*'
+
+# TODO: enable these!
+Lint/MissingSuper:
+  Enabled: false
+Lint/RedundantSafeNavigation:
+  Enabled: false
+Lint/NoReturnInBeginEndBlocks:
+  Enabled: false

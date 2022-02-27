@@ -1,0 +1,18 @@
+<% technologies = ['Ruby/RoR', 'Scss', 'Devise', 'Turbolinks', 'Heroku', 'Github'].freeze %>
+
+<section id="about_us" class="hero is-large is-link">
+  <div class="hero-body">
+    <p class="title">
+      About The Project
+    </p>
+    <p class="subtitle">
+      This is a quick example of how implement a traditional Auth flow using RoR and Devise gem.
+      For this project we used the following technologies:
+      <ul>
+        <% technologies.map do |tech| %>
+          <li class="is-size-4 my-3"><span class="is-size-5">👻</span> <%= tech %></li>
+        <% end %>
+      </ul>
+    </p>
+  </div>
+</section>

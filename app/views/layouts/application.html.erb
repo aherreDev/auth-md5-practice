@@ -5,12 +5,51 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <div class="navbar">
+      <div class="navbar-brand">
+        <a class="navbar-item" href="https://bulma.io">
+          <span class="is-size-3">
+            👻
+          </span>
+
+          <span class="is-size-4">
+            Code <i>Boo!</i>ster
+          </span>
+        </a>
+
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+
+      <div id="navbarBasicExample" class="navbar-menu">
+        <% if user_signed_in? %>
+          <%= render 'layouts/navbar/authenticated_navbar', user: current_user %>
+        <% else %>
+          <%= render 'layouts/navbar/public_navbar', user: current_user %>
+        <% end %>
+      </div>
+    </div>
+
     <%= yield %>
+
+    <footer class="footer">
+      <div class="content has-text-centered">
+        <p>
+          <strong>Code <i>Boo!</i>ster</strong>. The source code is licensed
+          <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
+          is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
+        </p>
+      </div>
+    </footer>
   </body>
 </html>
